@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 
 public class PatientRequestDTO {
 
-    @NotBlank
+    @NotBlank(message = "Name is required")
     @Size(max = 100 , message = "Name cannot exceed 100 characters")
     private String name;
 
@@ -17,13 +17,14 @@ public class PatientRequestDTO {
     private String email;
 
 
-    @NotBlank(message = "Address is required")
+    @NotBlank(message = "Date of birth is required")
     private String dateOfBirth;
 
-    @NotNull(message = "Registered date is required")
+    
+    @NotBlank(message = "Registered date is required")
     private String registeredDate;
 
-    @NotNull(message = "address cannot be null" )
+    @NotBlank(message = "address cannot be null" )
     private String address;
 
     public String getAddress() {
