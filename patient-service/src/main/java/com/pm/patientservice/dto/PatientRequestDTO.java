@@ -20,8 +20,10 @@ public class PatientRequestDTO {
     @NotBlank(message = "Date of birth is required")
     private String dateOfBirth;
 
-    
-    @NotBlank(message = "Registered date is required")
+
+    //we have made this validation a part of CreatePatientValidation class group .... so this validation will only be checked when the incoming request
+    //specifically mentions this group for validation
+    @NotBlank(groups = CreatePatientValidationGroup.class, message = "Registered date is required")
     private String registeredDate;
 
     @NotBlank(message = "address cannot be null" )
