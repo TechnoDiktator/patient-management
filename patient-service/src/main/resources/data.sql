@@ -1,3 +1,8 @@
+
+-- This is the seed data that we are inserting in the  database for the fake database 
+
+
+
 -- Ensure the 'patient' table exists
 CREATE TABLE IF NOT EXISTS patient
 (
