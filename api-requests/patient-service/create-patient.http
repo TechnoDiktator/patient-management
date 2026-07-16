@@ -1,5 +1,14 @@
-### GET request to example server
-GET https://examples.http-client.intellij.net/get
-    ?generated-in=IntelliJ IDEA
+### POST request too create a new entity
+POST http://localhost:4000/patients
+Content-Type: application/json
+
+{
+  "name" : "jon doni" ,
+  "email": "jon@example3" ,
+  "address" : "190 main street",
+  "registeredDate": "2024-11-21",
+  "dateOfBirth": "1998-09-09"
+}
+
 
 ###

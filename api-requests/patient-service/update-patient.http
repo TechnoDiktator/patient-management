@@ -1,5 +1,26 @@
-### GET request to example server
-GET https://examples.http-client.intellij.net/get
-    ?generated-in=IntelliJ IDEA
+### POST request to update a patient entity
+PUT http://localhost:4000/patients/123e4567-e89b-12d3-a456-426614174000
+Content-Type: application/json
+
+{
+  "name" : "John Doe" ,
+  "address" : "123 main street lisari gate meeruthiya",
+  "dateOfBirth": "1996-09-09",
+  "email": "test_updated@example.com"
+
+}
+
+###
+
+
+###
+
+#Dummy data that is present in the h2 database
+#'123e4567-e89b-12d3-a456-426614174000',
+#'John Doe',
+#'john.doe@example.com',
+#'123 Main St, Springfield',
+#'1985-06-15',
+#'2024-01-10'
 
 ###

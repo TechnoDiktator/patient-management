@@ -1,5 +1,8 @@
-### GET request to example server
-GET https://examples.http-client.intellij.net/get
-    ?generated-in=IntelliJ IDEA
+#  HIT THE CREATE PATIENT API FIRST
+
+### DELETE request to delete a patient
+
+DELETE http://localhost:4000/patients/delete/259961c1-9bb6-46a5-ac01-3d156fc79b11
 
 ###
+
