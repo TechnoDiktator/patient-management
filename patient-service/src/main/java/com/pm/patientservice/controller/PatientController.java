@@ -6,6 +6,8 @@ import com.pm.patientservice.dto.PatientRequestDTO;
 import com.pm.patientservice.dto.PatientResponseDTO;
 import com.pm.patientservice.repository.PatientRepository;
 import com.pm.patientservice.service.PatientService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.groups.Default;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/patients")
+@Tag(name = "Patient" , description = "API for managing Patients")
 public class PatientController {
 
     private final PatientService patientService;
@@ -29,6 +32,7 @@ public class PatientController {
 
 
     @GetMapping
+    @Operation(summary = "Get Patients" )
     public ResponseEntity<List<PatientResponseDTO>> getPatients() {
         List<PatientResponseDTO> patients = patientService.getPatients();
         return ResponseEntity.ok().body(patients);
@@ -36,6 +40,7 @@ public class PatientController {
 
 
     @PostMapping
+    @Operation(summary = "Create a new Patient")
     public ResponseEntity<PatientResponseDTO> createPatient(@Validated({Default.class , CreatePatientValidationGroup.class}) @RequestBody PatientRequestDTO patientRequestDTO) {
         PatientResponseDTO patientResponseDTO = patientService.createPatient(patientRequestDTO);
         return ResponseEntity.ok().body(patientResponseDTO);
@@ -43,6 +48,7 @@ public class PatientController {
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Update a new patient")
     public ResponseEntity<PatientResponseDTO> updatePatient(@PathVariable UUID id , @Validated({Default.class}) @RequestBody PatientRequestDTO patientRequestDTO){
         PatientResponseDTO patientResponseDTO = patientService.updatePatient(id , patientRequestDTO);
         return ResponseEntity.ok().body(patientResponseDTO);
@@ -51,6 +57,7 @@ public class PatientController {
 
 
     @DeleteMapping("/delete/{id}")
+    @Operation(summary = "Delete a patient")
     public ResponseEntity<String> deletePatient(@PathVariable UUID id ){
         patientService.deletePatient(id);
         return ResponseEntity.ok().body("Patient successfully deleted");
