@@ -3,11 +3,11 @@ POST http://localhost:4000/patients
 Content-Type: application/json
 
 {
-  "name" : "jon doe with billing account" ,
-  "email": "test@example3" ,
+  "name" : "jon doe with billing account and kafka message" ,
+  "email": "test46@exap8dfdfd098" ,
   "address" : "290 main street",
-  "registeredDate": "2024-11-21",
-  "dateOfBirth": "1998-09-09"
+  "registeredDate": "2026-05-21",
+  "dateOfBirth": "1998-09-06"
 }
 
 ###
