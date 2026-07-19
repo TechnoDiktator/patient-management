@@ -2,8 +2,7 @@
 
 #now the request is like this
 GET http://localhost:4004/api/patients
-
-
+Authorization: Bearer {{token}}}
 ###
 
 #Before the gateway was deployed we hit the patient service directly
