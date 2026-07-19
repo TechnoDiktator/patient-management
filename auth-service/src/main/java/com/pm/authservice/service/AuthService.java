@@ -23,11 +23,46 @@ public class AuthService {
     }
 
     public Optional<String> authenticate(LoginRequestDTO loginRequestDTO){
-        Optional<String> token = userService.findByEmail(loginRequestDTO.getWmail())
-                .filter(u -> passwordEncoder.matches(loginRequestDTO.getPassword() , u.getPassword()))
-                .map(u -> jwtUtil.generateToken(u.getEmail() , u.getRole()));
-        return token;
+        System.out.println("Email from request: " + loginRequestDTO.getEmail());
 
+        Optional<User> user = userService.findByEmail(loginRequestDTO.getEmail());
+
+        System.out.println("User found: " + user.isPresent());
+
+        if (user.isEmpty()) {
+            return Optional.empty();
+        }
+
+        System.out.println("Stored hash: " + user.get().getPassword());
+
+        boolean matches = passwordEncoder.matches(
+                loginRequestDTO.getPassword(),
+                user.get().getPassword());
+
+        System.out.println("Password matches: " + matches);
+
+        if (!matches) {
+            return Optional.empty();
+        }
+
+        return Optional.of(
+                jwtUtil.generateToken(
+                        user.get().getEmail(),
+                        user.get().getRole()));
     }
+
+
+    public boolean validateToken(String token){
+        try {
+            jwtUtil.validateToken(token);
+        } catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
+
+
+
 
 }
